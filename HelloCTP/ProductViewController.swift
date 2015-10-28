@@ -7,11 +7,7 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
-    
-    @IBAction func buyNow(sender: UIButton) {
-        print("TODO")
-    }
-    
+        
     override func viewDidLoad() {
         // Set the view with the cached product
         updateView()
@@ -64,9 +60,16 @@ class ProductViewController: UIViewController {
                     }
                 case .Failure(let error):
                     print(error)
+                    print(response.data)
                 }
             }
         }
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Pass the selected product to the new view controller.
+        if let cartVC = segue.destinationViewController as? CartTableViewController {
+            cartVC.productToAdd = self.product
+        }
+    }
 }

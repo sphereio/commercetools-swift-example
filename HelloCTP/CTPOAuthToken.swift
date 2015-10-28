@@ -76,12 +76,42 @@ public func withHeader(callback: ([String : String]) -> Void) {
     }
 }
 
-public func sphereGetRequest(endpoint: String, parameters: [String : AnyObject]? = nil, completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
+public func debugCompletionHandler(response: Alamofire.Response<AnyObject, NSError>, completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
+    if response.result.isFailure {
+        do {
+            print("Oops, your request failed!")
+            let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+            if let errors = JSON["errors"] as? [[String : AnyObject]] {
+                for error in errors {
+                    if  let code = error["code"] as? String,
+                        let message = error["message"] as? String {
+                            print("\(code): \(message)")
+                    }
+                }
+            }
+        } catch {}
+    }
+    completionHandler(response)
+}
+
+public func sphereRequest(method: Alamofire.Method, _ endpoint: String, parameters: [String : AnyObject]? = nil, encoding: Alamofire.ParameterEncoding = .URL, completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
     withHeader { headers in
-        Alamofire.request(.GET, "https://api.sphere.io/\(CTPOAuthToken.project)/\(endpoint)", headers: headers, parameters: parameters)
+        Alamofire.request(method, "https://api.sphere.io/\(CTPOAuthToken.project)/\(endpoint)", headers: headers, parameters: parameters, encoding: encoding)
             .validate()
             .responseJSON { response in
-                completionHandler(response)
+                debugCompletionHandler(response, completionHandler: completionHandler)
         }
     }
+}
+
+public func sphereGetRequest(endpoint: String, parameters: [String : AnyObject]? = nil, completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
+    sphereRequest(.GET, endpoint, parameters: parameters, completionHandler: completionHandler)
+}
+
+public func spherePostRequest(endpoint: String, parameters: [String : AnyObject]? = nil, completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
+    sphereRequest(.POST, endpoint, parameters: parameters, encoding: .JSON, completionHandler: completionHandler)
+}
+
+public func sphereDeleteRequest(endpoint: String, parameters: [String : AnyObject]? = nil, completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
+    sphereRequest(.DELETE, endpoint, parameters: parameters, completionHandler: completionHandler)
 }
