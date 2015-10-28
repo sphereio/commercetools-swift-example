@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  HelloCTP
-//
-//  Created by Christoph Neijenhuis on 26/10/15.
-//  Copyright © 2015 Christoph Neijenhuis. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
