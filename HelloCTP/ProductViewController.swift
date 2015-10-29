@@ -60,7 +60,6 @@ class ProductViewController: UIViewController {
                     }
                 case .Failure(let error):
                     print(error)
-                    print(response.data)
                 }
             }
         }

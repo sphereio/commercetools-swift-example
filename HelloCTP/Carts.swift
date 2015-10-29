@@ -23,9 +23,9 @@ class Carts {
     
     // See http://dev.sphere.io/http-api-projects-carts.html#delete-cart
     static func delete(id: String, version: Int, _ completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
-        let json: [String : AnyObject] = [
+        let parameters: [String : AnyObject] = [
             "version": version
         ]
-        sphereDeleteRequest("carts/\(id)", parameters: json, completionHandler: completionHandler)
+        sphereDeleteRequest("carts/\(id)", parameters: parameters, completionHandler: completionHandler)
     }
 }
