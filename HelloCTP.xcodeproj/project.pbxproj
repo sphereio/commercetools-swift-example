@@ -21,6 +21,7 @@
 		11D3808A1BE0BB9300DBB195 /* ProductProjections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D380891BE0BB9300DBB195 /* ProductProjections.swift */; };
 		11D3808D1BE113C300DBB195 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3808C1BE113C300DBB195 /* CartTableViewController.swift */; };
 		11D3808F1BE115C000DBB195 /* Carts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3808E1BE115C000DBB195 /* Carts.swift */; };
+		11D380911BE51FAA00DBB195 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D380901BE51FAA00DBB195 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		11D380891BE0BB9300DBB195 /* ProductProjections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductProjections.swift; sourceTree = "<group>"; };
 		11D3808C1BE113C300DBB195 /* CartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
 		11D3808E1BE115C000DBB195 /* Carts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carts.swift; sourceTree = "<group>"; };
+		11D380901BE51FAA00DBB195 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				11D380851BDFC88900DBB195 /* CTPOAuthToken.swift */,
+				11D380901BE51FAA00DBB195 /* Endpoint.swift */,
 				11D380891BE0BB9300DBB195 /* ProductProjections.swift */,
 				11D3808E1BE115C000DBB195 /* Carts.swift */,
 			);
@@ -430,6 +433,7 @@
 			files = (
 				11D380841BDF918900DBB195 /* ProductTableViewController.swift in Sources */,
 				11D3808D1BE113C300DBB195 /* CartTableViewController.swift in Sources */,
+				11D380911BE51FAA00DBB195 /* Endpoint.swift in Sources */,
 				11D380391BDE88BF00DBB195 /* AppDelegate.swift in Sources */,
 				11D380881BDFDB5C00DBB195 /* ProductViewController.swift in Sources */,
 				11D3808A1BE0BB9300DBB195 /* ProductProjections.swift in Sources */,
