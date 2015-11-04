@@ -13,7 +13,7 @@ class ProductTableViewController: UITableViewController {
     }
     
     func loadData() {
-        ProductProjections.search(parameters: ["sort": "price desc", "expand": "categories[*]"]) { response in
+        ProductProjections.search(["sort": "price desc", "expand": "categories[*]"]) { response in
             switch response.result {
             case .Success(let JSON):
                 // print(JSON)

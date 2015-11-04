@@ -62,16 +62,6 @@ public func withHeader(callback: ([String : String]) -> Void) {
                 case .Failure:
                     print(response.debugDescription)
                 }
-                if let JSON = response.result.value {
-                    if let accessToken = JSON["access_token"] as? String {
-                        // Put token into cache
-                        CTPOAuthToken.token = accessToken
-                        // And use the header to call the callback
-                        if let h = CTPOAuthToken.header {
-                            callback(h)
-                        }
-                    }
-                }
         }
     }
 }
@@ -80,6 +70,7 @@ public func debugCompletionHandler(response: Alamofire.Response<AnyObject, NSErr
     if response.result.isFailure {
         do {
             print("Oops, your request failed!")
+//            print(response.request.debugDescription)
             let JSON = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
             if let errors = JSON["errors"] as? [[String : AnyObject]] {
                 for error in errors {

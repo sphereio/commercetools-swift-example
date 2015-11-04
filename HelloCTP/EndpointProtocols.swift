@@ -79,3 +79,21 @@ extension EndpointWithDelete {
         sphereDeleteRequest(endpointWithId(id), parameters: parameters, completionHandler: completionHandler)
     }
 }
+
+protocol EndpointWithSearch : Endpoint {
+    static func search(parameters: [String : AnyObject]?, _ completionHandler: Alamofire.Response<AnyObject, NSError> -> Void)
+}
+
+extension EndpointWithSearch {
+    static func search(parameters: [String : AnyObject]? = nil, _ completionHandler: Alamofire.Response<AnyObject, NSError> -> Void) {
+        sphereGetRequest("\(endpoint)search", parameters: parameters, completionHandler: completionHandler)
+    }
+}
+
+protocol EndpointWithSuggest : Endpoint {
+    // TODO
+}
+
+protocol EndpointWithInfo : Endpoint {
+    // TODO
+}
